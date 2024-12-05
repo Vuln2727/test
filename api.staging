@@ -1,0 +1,1884 @@
+<html><head><title>Burp Scanner Report</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none';img-src 'self' data:;style-src 'unsafe-inline'" />
+<style type="text/css">
+body { background: #dedede; font-family: 'Droid sans', Helvetica, Arial, sans-serif; color: #404042; -webkit-font-smoothing: antialiased; }
+#container { width: 930px; padding: 0 15px; margin: 20px auto; background-color: #ffffff; }
+table { font-family: Arial, sans-serif; }
+a:link, a:visited { color: #ff6633; text-decoration: none; transform: 0.3s; }
+a:hover, a:active { color: #e24920; text-decoration: underline; }
+h1 { font-size: 1.6em; line-height: 1.4em; font-weight: normal; color: #404042; }
+h2 { font-size: 1.3em; line-height: 1.2em; padding: 0; margin: 0.8em 0 0.3em 0; font-weight: normal; color: #404042;}
+h4 { font-size: 1.0em; line-height: 1.2em; padding: 0; margin: 0.8em 0 0.3em 0; font-weight: bold; color: #404042;}
+.rule { height: 0px; border-top: 1px solid #404042; padding: 0; margin: 20px -15px 0 -15px; }
+.title { color: #ffffff; background: #1e517e; margin: 0 -15px 10px -15px; overflow: hidden; }
+.title h1 { color: #ffffff; padding: 10px 15px; margin: 0; font-size: 1.8em; }
+.title img { float: right; display: inline; padding: 1px; }
+.heading { background: #404042; margin: 0 -15px 10px -15px; padding: 0; display: inline-block; overflow: hidden; }
+.heading img { float: right; display: inline; margin: 8px 10px 0 10px; padding: 0; }
+.code { font-family: 'Courier New', Courier, monospace; }
+table.overview_table { border: 2px solid #e6e6e6; margin: 0; padding: 5px;}
+table.overview_table td.info { padding: 5px; background: #dedede; text-align: right; border-top: 2px solid #ffffff; border-right: 2px solid #ffffff; }
+table.overview_table td.info_end { padding: 5px; background: #dedede; text-align: right; border-top: 2px solid #ffffff; }
+table.overview_table td.colour_holder { padding: 0px; border-top: 2px solid #ffffff; border-right: 2px solid #ffffff; }
+table.overview_table td.colour_holder_end { padding: 0px; border-top: 2px solid #ffffff; }
+table.overview_table td.label { padding: 5px; font-weight: bold; }
+table.summary_table td { padding: 5px; background: #dedede; text-align: left; border-top: 2px solid #ffffff; border-right: 2px solid #ffffff; }
+table.summary_table td.icon { background: #404042; }
+.colour_block { padding: 5px; text-align: right; display: block; font-weight: bold; }
+.high_certain { border: 2px solid #f32a4c; color: #ffffff; background: #f32a4c; }
+.high_firm { border: 2px solid #f997a7; background: #f997a7; }
+.high_tentative { border: 2px solid #fddadf; background: #fddadf; }
+.medium_certain { border: 2px solid #ff6633; color: #ffffff; background: #ff6633; }
+.medium_firm { border: 2px solid #ffb299; background: #ffb299; }
+.medium_tentative { border: 2px solid #ffd9cc; background: #ffd9cc; }
+.low_certain { border: 2px solid #0094ff; color: #ffffff; background: #0094ff; }
+.low_firm { border: 2px solid #7fc9ff; background: #7fc9ff; }
+.low_tentative { border: 2px solid #bfe4ff; background: #bfe4ff; }
+.info_certain { border: 2px solid #7e8993; color: #ffffff; background: #7e8993; }
+.info_firm { border: 2px solid #b9ced2; background: #b9ced2; }
+.info_tentative { border: 2px solid #dae9ef; background: #dae9ef; }
+.false_positive_certain { border: 2px solid #3ba317; color: #ffffff; background: #3ba317; }
+.false_positive_firm { border: 2px solid #7dc164; background: #7dc164; }
+.false_positive_tentative { border: 2px solid #b8dcaa; background: #b8dcaa; }
+.row_total { border: 1px solid #dedede; background: #fff; }
+.grad_mark { padding: 4px; border-left: 1px solid #404042; display: inline-block; }
+.bar { margin-top: 3px; }
+.TOCH0 { font-size: 1.0em; font-weight: bold; word-wrap: break-word; }
+.TOCH1 { font-size: 0.8em; text-indent: -20px; padding-left: 50px; margin: 0; word-wrap: break-word; }
+.TOCH2 { font-size: 0.8em; text-indent: -20px; padding-left: 70px; margin: 0; word-wrap: break-word; }
+.BODH0 { font-size: 1.6em; line-height: 1.2em; font-weight: normal; padding: 10px 15px; margin: 0 -15px 10px -15px; display: inline-block; color: #ffffff; background-color: #1e517e; width: 100%; word-wrap: break-word; }
+.BODH0 a:link, .BODH0 a:visited, .BODH0 a:hover, .BODH0 a:active { color: #ffffff; text-decoration: none; }
+.BODH1 { font-size: 1.3em; line-height: 1.2em; font-weight: normal; padding: 13px 15px; margin: 0 -15px 0 -15px; display: inline-block; width: 100%; word-wrap: break-word; }
+.BODH1 a:link, .BODH1 a:visited, .BODH1 a:hover, .BODH1 a:active { color: #404042; text-decoration: none; }
+.BODH2 { font-size: 1.0em; font-weight: bold; line-height: 2.0em; width: 100%; word-wrap: break-word; }
+.PREVNEXT { font-size: 0.7em; font-weight: bold; color: #ffffff; padding: 3px 10px; border-radius: 10px;}
+.PREVNEXT:link, .PREVNEXT:visited { color: #ff6633 !important; background: #ffffff !important; border: 1px solid #ff6633 !important; text-decoration: none; }
+.PREVNEXT:hover, .PREVNEXT:active { color: #fff !important; background: #e24920 !important; border: 1px solid #e24920 !important; text-decoration: none; }
+.TEXT { font-size: 0.8em; padding: 0; margin: 0; word-wrap: break-word; }
+TD { font-size: 0.8em; }
+.HIGHLIGHT { background-color: #fcf446; }
+.rr_div { border: 2px solid #1e517e; width: 916px; word-wrap: break-word; -ms-word-wrap: break-word; margin: 0.8em 0; padding: 5px; font-size: 0.8em; max-height: 300px; overflow-y: auto; }
+
+
+
+@media print {
+    body { width: 100%; color: #000000; position: relative; }
+    #container { width: 98%; padding: 0; margin: 0; }
+    h1 { color: #000000; }
+    h2 { color: #000000;}
+    .rule { margin: 20px 0 0 0; }
+    .title { color: #000000; margin: 0 0 10px 0; padding: 10px 0; }
+    .title h1 { color: #000000; }
+    .title img { margin: -3px 0; }
+    .heading { margin: 0 0 10px 0; }
+    .BODH0 { color: #000000; }
+    .BODH1 { color: #000000; }
+    .PREVNEXT { visibility: hidden; display: none; }
+    .rr_div { width: 98%; margin: 0.8em auto; max-height: none !important; overflow: hidden; }
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+<div class="title"><img src="images/burp-suite.gif" width="184" height="58"><h1>Burp Scanner Report</h1></div>
+<h1>Summary</h1>
+<span class="TEXT">The table below shows the numbers of issues identified in different categories. Issues are classified according to severity as High, Medium, Low, Information or False Positive. This reflects the likely impact of each issue for a typical organization. Issues are also classified according to confidence as Certain, Firm or Tentative. This reflects the inherent reliability of the technique that was used to identify the issue.</span><br><br><table cellpadding="0" cellspacing="0" class="overview_table">
+    <tr>
+        <td width="70">&nbsp;</td>
+        <td width="100">&nbsp;</td>
+        <td colspan="4" height="40" align="center" class="label">Confidence</td>
+    </tr>
+    <tr>
+        <td width="70">&nbsp;</td>
+        <td width="90">&nbsp;</td>
+        <td width="82" height="30" class="info">Certain</td>
+        <td width="82" height="30" class="info">Firm</td>
+        <td width="82" height="30" class="info">Tentative</td>
+        <td width="82" height="30" class="info_end">Total</td>
+    </tr>
+    <tr>
+        <td rowspan="5" valign="middle" class="label">Severity</td>
+        <td class="info" height="30">High</td>
+        <td class="colour_holder"><span class="colour_block high_certain">0</span></td>
+        <td class="colour_holder"><span class="colour_block high_firm">0</span></td>
+        <td class="colour_holder"><span class="colour_block high_tentative">0</span></td>
+        <td class="colour_holder_end"><span class="colour_block row_total">0</span></td>
+    </tr>
+    <tr>
+        <td class="info" height="30">Medium</td>
+        <td class="colour_holder"><span class="colour_block medium_certain">0</span></td>
+        <td class="colour_holder"><span class="colour_block medium_firm">0</span></td>
+        <td class="colour_holder"><span class="colour_block medium_tentative">0</span></td>
+        <td class="colour_holder_end"><span class="colour_block row_total">0</span></td>
+    </tr>
+    <tr>
+        <td class="info" height="30">Low</td>
+        <td class="colour_holder"><span class="colour_block low_certain">3</span></td>
+        <td class="colour_holder"><span class="colour_block low_firm">0</span></td>
+        <td class="colour_holder"><span class="colour_block low_tentative">0</span></td>
+        <td class="colour_holder_end"><span class="colour_block row_total">3</span></td>
+    </tr>
+    <tr>
+        <td class="info" height="30">Information</td>
+        <td class="colour_holder"><span class="colour_block info_certain">46</span></td>
+        <td class="colour_holder"><span class="colour_block info_firm">0</span></td>
+        <td class="colour_holder"><span class="colour_block info_tentative">0</span></td>
+        <td class="colour_holder_end"><span class="colour_block row_total">46</span></td>
+    </tr>
+    <tr>
+        <td class="info" height="30">False Positive</td>
+        <td class="colour_holder"><span class="colour_block false_positive_certain">0</span></td>
+        <td class="colour_holder"><span class="colour_block false_positive_firm">0</span></td>
+        <td class="colour_holder"><span class="colour_block false_positive_tentative">0</span></td>
+        <td class="colour_holder_end"><span class="colour_block row_total">0</span></td>
+    </tr>
+</table><br>
+<span class="TEXT">The chart below shows the aggregated numbers of issues identified in each category. Solid colored bars represent issues with a confidence level of Certain, and the bars fade as the confidence level falls.</span><br><br><table cellpadding="0" cellspacing="0" class="overview_table">
+    <tr>
+        <td width="70">&nbsp;</td>
+        <td width="100">&nbsp;</td>
+        <td colspan="11" height="40" align="center" class="label">Number of issues</td>
+    </tr>
+    <tr>
+        <td width="70">&nbsp;</td>
+        <td width="90">&nbsp;</td>
+        <td width="68"><span class="grad_mark">0</span></td>
+        <td width="68"><span class="grad_mark">5</span></td>
+        <td width="68"><span class="grad_mark">10</span></td>
+        <td width="68"><span class="grad_mark">15</span></td>
+        <td width="68"><span class="grad_mark">20</span></td>
+        <td width="68"><span class="grad_mark">25</span></td>
+        <td width="68"><span class="grad_mark">30</span></td>
+        <td width="68"><span class="grad_mark">35</span></td>
+        <td width="68"><span class="grad_mark">40</span></td>
+        <td width="68"><span class="grad_mark">45</span></td>
+    </tr>
+    <tr>
+        <td rowspan="3" valign="middle" class="label">Severity</td>
+        <td class="info">High</td>
+        <td colspan="10" height="30">
+            <table cellpadding="0" cellspacing="0"><tr><td><img class="bar" src="images/bar-high-certain.gif" width="0" height="16"></td><td><img class="bar" src="images/bar-high-firm.gif" width="0" height="16"></td><td><img class="bar" src="images/bar-high-tentative.gif" width="0" height="16"></td></tr></table>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="info">Medium</td>
+        <td colspan="10" height="30">
+            <table cellpadding="0" cellspacing="0"><tr><td><img class="bar" src="images/bar-medium-certain.gif" width="0" height="16"></td><td><img class="bar" src="images/bar-medium-firm.gif" width="0" height="16"></td><td><img class="bar" src="images/bar-medium-tentative.gif" width="0" height="16"></td></tr></table>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="info">Low</td>
+        <td colspan="10" height="30">
+            <table cellpadding="0" cellspacing="0"><tr><td><img class="bar" src="images/bar-low-certain.gif" width="41" height="16"></td><td><img class="bar" src="images/bar-low-firm.gif" width="0" height="16"></td><td><img class="bar" src="images/bar-low-tentative.gif" width="0" height="16"></td></tr></table>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+
+<div class="rule"></div>
+<h1>Contents</h1>
+<p class="TOCH0"><a href="#1">1.&nbsp;Strict transport security not enforced</a></p>
+<p class="TOCH1"><a href="#1.1">1.1.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles</a></p>
+<p class="TOCH1"><a href="#1.2">1.2.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches</a></p>
+<p class="TOCH1"><a href="#1.3">1.3.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets</a></p>
+<p class="TOCH0"><a href="#2">2.&nbsp;Cross-origin resource sharing</a></p>
+<p class="TOCH1"><a href="#2.1">2.1.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches</a></p>
+<p class="TOCH1"><a href="#2.2">2.2.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets</a></p>
+<p class="TOCH1"><a href="#2.3">2.3.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377</a></p>
+<p class="TOCH1"><a href="#2.4">2.4.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383</a></p>
+<p class="TOCH1"><a href="#2.5">2.5.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384</a></p>
+<p class="TOCH1"><a href="#2.6">2.6.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389</a></p>
+<p class="TOCH1"><a href="#2.7">2.7.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391</a></p>
+<p class="TOCH1"><a href="#2.8">2.8.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392</a></p>
+<p class="TOCH1"><a href="#2.9">2.9.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397</a></p>
+<p class="TOCH1"><a href="#2.10">2.10.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398</a></p>
+<p class="TOCH1"><a href="#2.11">2.11.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550</a></p>
+<p class="TOCH0"><a href="#3">3.&nbsp;Input returned in response (reflected)</a></p>
+<p class="TOCH1"><a href="#3.1">3.1.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.2">3.2.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.3">3.3.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.4">3.4.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.5">3.5.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.6">3.6.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.7">3.7.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.8">3.8.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.9">3.9.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.10">3.10.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.11">3.11.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.12">3.12.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.13">3.13.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.14">3.14.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.15">3.15.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.16">3.16.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.17">3.17.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.18">3.18.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.19">3.19.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.20">3.20.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.21">3.21.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.22">3.22.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.23">3.23.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.24">3.24.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.25">3.25.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.26">3.26.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.27">3.27.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.28">3.28.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.29">3.29.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.30">3.30.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.31">3.31.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550 [X-Country HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.32">3.32.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550 [X-Partner HTTP header]</a></p>
+<p class="TOCH1"><a href="#3.33">3.33.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550 [X-Sales-Channel HTTP header]</a></p>
+<p class="TOCH0"><a href="#4">4.&nbsp;TLS certificate</a></p>
+<p class="TOCH0"><a href="#5">5.&nbsp;Hidden HTTP 2</a></p>
+<br><div class="rule"></div>
+<span class="BODH0" id="1">1.&nbsp;<a href="https://portswigger.net/knowledgebase/issues/details/01000300_stricttransportsecuritynotenforced">Strict transport security not enforced</a></span>
+<br><a class="PREVNEXT" href="#2">Next</a>
+<br>
+<br><span class="TEXT">There are 3 instances of this issue:
+<ul>
+<li><a href="#1.1">/uat/aldi-df/vehicles</a></li>
+<li><a href="#1.2">/uat/aldi-df/vehicles/searches</a></li>
+<li><a href="#1.3">/uat/aldi-df/vehicles/searches/facets</a></li>
+</ul></span>
+<h2>Issue background</h2>
+<span class="TEXT"><p> The application fails to prevent users from connecting  to it over unencrypted connections.  An attacker able to modify a legitimate user's network traffic could bypass the application's use of SSL/TLS encryption, and use the application as a platform for attacks against its users. This attack is performed by rewriting HTTPS links as HTTP, so that if a targeted user follows a link to the site from an HTTP page, their browser never attempts to use an encrypted connection. The sslstrip tool  automates this process. </p>
+<p>
+To exploit this vulnerability, an attacker must be suitably positioned to intercept and modify the victim's network traffic.This scenario typically occurs when a client communicates with the server over an insecure connection such as public Wi-Fi, or a corporate or home network that is shared with a compromised computer. Common defenses such as switched networks are not sufficient to prevent this. An attacker situated in the user's ISP or the application's hosting infrastructure could also perform this attack. Note that an advanced adversary could potentially target any connection made over the Internet's core infrastructure. </p></span>
+<h2>Issue remediation</h2>
+<span class="TEXT"><p>The application should instruct web browsers to only access the application using HTTPS. To do this, enable HTTP Strict Transport Security (HSTS) by adding a response header with the name 'Strict-Transport-Security' and the value 'max-age=expireTime', where expireTime is the time in seconds that browsers should remember that the site should only be accessed using HTTPS. Consider adding the 'includeSubDomains' flag if appropriate.</p>
+<p>Note that because HSTS is a &quot;trust on first use&quot; (TOFU) protocol, a user who has never accessed the application will never have seen the HSTS header, and will therefore still be vulnerable to SSL stripping attacks. To mitigate this risk, you can optionally add the 'preload' flag to the HSTS header, and submit the domain for review by browser vendors.</p></span>
+<h2>References</h2>
+<span class="TEXT"><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security">HTTP Strict Transport Security</a></li>
+<li><a href="https://github.com/moxie0/sslstrip">sslstrip</a></li>
+<li><a href="https://hstspreload.appspot.com/">HSTS Preload Form</a></li>
+</ul></span>
+<h2>Vulnerability classifications</h2><span class="TEXT"><ul>
+<li><a href="https://cwe.mitre.org/data/definitions/523.html">CWE-523: Unprotected Transport of Credentials</a></li>
+    <li><a href="https://capec.mitre.org/data/definitions/94.html">CAPEC-94: Man in the Middle Attack</a></li>
+    <li><a href="https://capec.mitre.org/data/definitions/157.html">CAPEC-157: Sniffing Attacks</a></li>
+</ul></span>
+<br><br><div class="rule"></div>
+<span class="BODH1" id="1.1">1.1.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles</span>
+<br><a class="PREVNEXT" href="#1.2">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_low_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Low</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">This issue was found in multiple locations under the reported path.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>OPTIONS /uat/aldi-df/vehicles/vehicle/17147392 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: en-US,en;q=0.5<br>Accept-Encoding: gzip, deflate, br<br>Access-Control-Request-Method: GET<br>Access-Control-Request-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Referer: https://uat-mymobility.azurewebsites.net/<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 06:08:05 GMT<br>Content-Length: 0<br>Vary: Origin<br>Access-Control-Allow-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Max-Age: 120<br>Access-Control-Allow-Methods: GET<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T060804Z-178dcbf9dbdzbqcdhC1BOMva2400000003h000000000u7zf<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="1.2">1.2.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches</span>
+<br><a class="PREVNEXT" href="#1.1">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#1.3">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_low_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Low</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">This issue was found in multiple locations under the reported path.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>OPTIONS /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: en-US,en;q=0.5<br>Accept-Encoding: gzip, deflate, br<br>Access-Control-Request-Method: POST<br>Access-Control-Request-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Referer: https://uat-mymobility.azurewebsites.net/<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:40:55 GMT<br>Content-Length: 0<br>Vary: Origin<br>Access-Control-Allow-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Max-Age: 120<br>Access-Control-Allow-Methods: POST<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T124055Z-178dcbf9dbdgfktbhC1BOMhp1c00000004w0000000000uwm<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="1.3">1.3.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets</span>
+<br><a class="PREVNEXT" href="#1.2">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.1">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_low_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Low</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches/facets</b></td>
+</tr>
+</table>
+<h2>Request</h2>
+<div class="rr_div"><span>OPTIONS /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: en-US,en;q=0.5<br>Accept-Encoding: gzip, deflate, br<br>Access-Control-Request-Method: POST<br>Access-Control-Request-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Referer: https://uat-mymobility.azurewebsites.net/<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:31:24 GMT<br>Content-Length: 0<br>Vary: Origin<br>Access-Control-Allow-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Max-Age: 120<br>Access-Control-Allow-Methods: POST<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123123Z-178dcbf9dbdzbqcdhC1BOMva2400000004f0000000009gfs<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH0" id="2">2.&nbsp;<a href="https://portswigger.net/knowledgebase/issues/details/00200600_crossoriginresourcesharing">Cross-origin resource sharing</a></span>
+<br><a class="PREVNEXT" href="#1">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3">Next</a>
+<br>
+<br><span class="TEXT">There are 11 instances of this issue:
+<ul>
+<li><a href="#2.1">/uat/aldi-df/vehicles/searches</a></li>
+<li><a href="#2.2">/uat/aldi-df/vehicles/searches/facets</a></li>
+<li><a href="#2.3">/uat/aldi-df/vehicles/vehicle/17147377</a></li>
+<li><a href="#2.4">/uat/aldi-df/vehicles/vehicle/17147383</a></li>
+<li><a href="#2.5">/uat/aldi-df/vehicles/vehicle/17147384</a></li>
+<li><a href="#2.6">/uat/aldi-df/vehicles/vehicle/17147389</a></li>
+<li><a href="#2.7">/uat/aldi-df/vehicles/vehicle/17147391</a></li>
+<li><a href="#2.8">/uat/aldi-df/vehicles/vehicle/17147392</a></li>
+<li><a href="#2.9">/uat/aldi-df/vehicles/vehicle/17147397</a></li>
+<li><a href="#2.10">/uat/aldi-df/vehicles/vehicle/17147398</a></li>
+<li><a href="#2.11">/uat/aldi-df/vehicles/vehicle/17147550</a></li>
+</ul></span>
+<h2>Issue background</h2>
+<span class="TEXT"><p>An HTML5 cross-origin resource sharing (CORS) policy controls whether and how content running on other domains can perform two-way interaction with the domain that publishes the policy. The policy is fine-grained and can apply access controls per-request based on the URL and other features of the request.</p><p>If another domain is allowed by the policy, then that domain can potentially attack users of the application. If a user is logged in to the application, and visits a domain allowed by the policy, then any malicious content running on that domain can potentially retrieve content from the application, and sometimes carry out actions within the security context of the logged in user.</p>
+<p>Even if an allowed domain is not overtly malicious in itself, security vulnerabilities within that domain could potentially be leveraged by an attacker to exploit the trust relationship and attack the application that allows access. CORS policies on pages containing sensitive information should be reviewed to determine whether it is appropriate for the application to trust both the intentions and security posture of any domains granted access.</p></span>
+<h2>Issue remediation</h2>
+<span class="TEXT"><p>Any inappropriate domains should be removed from the CORS policy.</p></span>
+<h2>References</h2>
+<span class="TEXT"><ul>
+  <li><a href="https://portswigger.net/web-security/cors">Web Security Academy: Cross-origin resource sharing (CORS)</a></li>
+  <li> <a href="https://portswigger.net/research/exploiting-cors-misconfigurations-for-bitcoins-and-bounties">Exploiting CORS Misconfigurations</a> </li>
+</ul></span>
+<h2>Vulnerability classifications</h2><span class="TEXT"><ul>
+<li><a href="https://cwe.mitre.org/data/definitions/942.html">CWE-942: Overly Permissive Cross-domain Whitelist</a></li>
+</ul></span>
+<br><br><div class="rule"></div>
+<span class="BODH1" id="2.1">2.1.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches</span>
+<br><a class="PREVNEXT" href="#1.3">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.2">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>OPTIONS /uat/aldi-df/vehicles/searches HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: en-US,en;q=0.5<br>Accept-Encoding: gzip, deflate, br<br>Access-Control-Request-Method: POST<br>Access-Control-Request-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Referer: https://uat-mymobility.azurewebsites.net/<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:31:24 GMT<br>Content-Length: 0<br>Vary: Origin<br>Access-Control-Allow-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Max-Age: 120<br>Access-Control-Allow-Methods: POST<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123123Z-178dcbf9dbdzbqcdhC1BOMva2400000004f0000000009gft<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.2">2.2.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets</span>
+<br><a class="PREVNEXT" href="#2.1">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.3">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches/facets</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>OPTIONS /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: en-US,en;q=0.5<br>Accept-Encoding: gzip, deflate, br<br>Access-Control-Request-Method: POST<br>Access-Control-Request-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br>Referer: https://uat-mymobility.azurewebsites.net/<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:31:24 GMT<br>Content-Length: 0<br>Vary: Origin<br>Access-Control-Allow-Headers: content-type,x-ald-subscription-key,x-country,x-partner,x-sales-channel<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Max-Age: 120<br>Access-Control-Allow-Methods: POST<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123123Z-178dcbf9dbdzbqcdhC1BOMva2400000004f0000000009gfs<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.3">2.3.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377</span>
+<br><a class="PREVNEXT" href="#2.2">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.4">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147377</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147377 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:28 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: a70f4fc6-2f66-4610-9855-f89ac76edb20<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmk<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.4">2.4.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383</span>
+<br><a class="PREVNEXT" href="#2.3">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.5">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147383</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147383 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:29 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 3d4386f5-8e31-49a0-879d-fe046c7b1578<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmn<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.5">2.5.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384</span>
+<br><a class="PREVNEXT" href="#2.4">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.6">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147384</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147384 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:29 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 83ea2dee-f23f-4f7f-abcf-18adf5787612<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmu<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.6">2.6.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389</span>
+<br><a class="PREVNEXT" href="#2.5">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.7">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147389</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147389 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:29 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 2903eb70-ab48-4856-afa7-b1646d94592b<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmq<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.7">2.7.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391</span>
+<br><a class="PREVNEXT" href="#2.6">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.8">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147391</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147391 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:28 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 66f67d64-230c-495b-a505-e6a26e6339a3<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmg<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.8">2.8.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392</span>
+<br><a class="PREVNEXT" href="#2.7">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.9">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147392</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147392 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:29 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 7194f320-cec9-4410-a21c-f45773b378ae<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmv<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.9">2.9.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397</span>
+<br><a class="PREVNEXT" href="#2.8">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.10">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147397</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147397 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:28 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 5bdc3dbf-6a7f-4de4-a50f-dbb6969652ef<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmh<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.10">2.10.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398</span>
+<br><a class="PREVNEXT" href="#2.9">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#2.11">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147398</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147398 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:28 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 0a6a7d03-8ada-4d2f-b75a-ad771a532c0d<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmt<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="2.11">2.11.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550</span>
+<br><a class="PREVNEXT" href="#2.10">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.1">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147550</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The application implements an HTML5 cross-origin resource sharing (CORS) policy for this request.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147550 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br><span class="HIGHLIGHT">Origin: https://uat-mymobility.azurewebsites.net</span><br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:28 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: b90c7bd9-fed6-40bf-adad-272d2e98a926<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br><span class="HIGHLIGHT">Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net</span><br><span class="HIGHLIGHT">Access-Control-Allow-Credentials: true</span><br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122228Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000etmr<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH0" id="3">3.&nbsp;<a href="https://portswigger.net/knowledgebase/issues/details/00400c00_inputreturnedinresponsereflected">Input returned in response (reflected)</a></span>
+<br><a class="PREVNEXT" href="#2">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#4">Next</a>
+<br>
+<br><span class="TEXT">There are 33 instances of this issue:
+<ul>
+<li><a href="#3.1">/uat/aldi-df/vehicles/searches [X-Country HTTP header]</a></li>
+<li><a href="#3.2">/uat/aldi-df/vehicles/searches [X-Partner HTTP header]</a></li>
+<li><a href="#3.3">/uat/aldi-df/vehicles/searches [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.4">/uat/aldi-df/vehicles/searches/facets [X-Country HTTP header]</a></li>
+<li><a href="#3.5">/uat/aldi-df/vehicles/searches/facets [X-Partner HTTP header]</a></li>
+<li><a href="#3.6">/uat/aldi-df/vehicles/searches/facets [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.7">/uat/aldi-df/vehicles/vehicle/17147377 [X-Country HTTP header]</a></li>
+<li><a href="#3.8">/uat/aldi-df/vehicles/vehicle/17147377 [X-Partner HTTP header]</a></li>
+<li><a href="#3.9">/uat/aldi-df/vehicles/vehicle/17147377 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.10">/uat/aldi-df/vehicles/vehicle/17147383 [X-Country HTTP header]</a></li>
+<li><a href="#3.11">/uat/aldi-df/vehicles/vehicle/17147383 [X-Partner HTTP header]</a></li>
+<li><a href="#3.12">/uat/aldi-df/vehicles/vehicle/17147383 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.13">/uat/aldi-df/vehicles/vehicle/17147384 [X-Country HTTP header]</a></li>
+<li><a href="#3.14">/uat/aldi-df/vehicles/vehicle/17147384 [X-Partner HTTP header]</a></li>
+<li><a href="#3.15">/uat/aldi-df/vehicles/vehicle/17147384 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.16">/uat/aldi-df/vehicles/vehicle/17147389 [X-Country HTTP header]</a></li>
+<li><a href="#3.17">/uat/aldi-df/vehicles/vehicle/17147389 [X-Partner HTTP header]</a></li>
+<li><a href="#3.18">/uat/aldi-df/vehicles/vehicle/17147389 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.19">/uat/aldi-df/vehicles/vehicle/17147391 [X-Country HTTP header]</a></li>
+<li><a href="#3.20">/uat/aldi-df/vehicles/vehicle/17147391 [X-Partner HTTP header]</a></li>
+<li><a href="#3.21">/uat/aldi-df/vehicles/vehicle/17147391 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.22">/uat/aldi-df/vehicles/vehicle/17147392 [X-Country HTTP header]</a></li>
+<li><a href="#3.23">/uat/aldi-df/vehicles/vehicle/17147392 [X-Partner HTTP header]</a></li>
+<li><a href="#3.24">/uat/aldi-df/vehicles/vehicle/17147392 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.25">/uat/aldi-df/vehicles/vehicle/17147397 [X-Country HTTP header]</a></li>
+<li><a href="#3.26">/uat/aldi-df/vehicles/vehicle/17147397 [X-Partner HTTP header]</a></li>
+<li><a href="#3.27">/uat/aldi-df/vehicles/vehicle/17147397 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.28">/uat/aldi-df/vehicles/vehicle/17147398 [X-Country HTTP header]</a></li>
+<li><a href="#3.29">/uat/aldi-df/vehicles/vehicle/17147398 [X-Partner HTTP header]</a></li>
+<li><a href="#3.30">/uat/aldi-df/vehicles/vehicle/17147398 [X-Sales-Channel HTTP header]</a></li>
+<li><a href="#3.31">/uat/aldi-df/vehicles/vehicle/17147550 [X-Country HTTP header]</a></li>
+<li><a href="#3.32">/uat/aldi-df/vehicles/vehicle/17147550 [X-Partner HTTP header]</a></li>
+<li><a href="#3.33">/uat/aldi-df/vehicles/vehicle/17147550 [X-Sales-Channel HTTP header]</a></li>
+</ul></span>
+<h2>Issue background</h2>
+<span class="TEXT"><p>Reflection of input arises when data is copied from a request and echoed into the application's immediate response.</p><p>Input being returned in application responses is not a vulnerability in its own right. However, it is a prerequisite for many client-side vulnerabilities, including cross-site scripting, open redirection, content spoofing, and response header injection. Additionally, some server-side vulnerabilities such as SQL injection are often easier to identify and exploit when input is returned in responses. In applications where input retrieval is rare and the environment is resistant to automated testing (for example, due to a web application firewall), it might be worth subjecting instances of it to focused manual testing. </p></span>
+<h2>Vulnerability classifications</h2><span class="TEXT"><ul>
+<li><a href="https://cwe.mitre.org/data/definitions/20.html">CWE-20: Improper Input Validation</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/116.html">CWE-116: Improper Encoding or Escaping of Output</a></li>
+</ul></span>
+<br><br><div class="rule"></div>
+<span class="BODH1" id="3.1">3.1.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#2.11">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.2">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">h4c55xnljo</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 141<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"filters":{"make":["test"],"model":[],"price":{},"bodyTypes":[],"fuelTypes":[],"co2":{},"gearboxTypes":[]},"offset":0,"orderBy":11,"top":15}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:32:31 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 38<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 0b171399-94c8-4bd5-8166-542ac99e6826<br>X-Country: dk<span class="HIGHLIGHT">h4c55xnljo</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123231Z-178dcbf9dbdzbqcdhC1BOMva2400000004f0000000009t2k<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"items":null,"facets":null}</span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.2">3.2.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.1">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.3">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">rltxqnz9k2</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 141<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"filters":{"make":["test"],"model":[],"price":{},"bodyTypes":[],"fuelTypes":[],"co2":{},"gearboxTypes":[]},"offset":0,"orderBy":11,"top":15}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:33:17 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 38<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: bba05ab2-6146-451e-96be-b4d1731fc845<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">rltxqnz9k2</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123317Z-178dcbf9dbdzbqcdhC1BOMva2400000004f0000000009z6w<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"items":null,"facets":null}</span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.3">3.3.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.2">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.4">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">gym2ctn91h</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 141<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"filters":{"make":["test"],"model":[],"price":{},"bodyTypes":[],"fuelTypes":[],"co2":{},"gearboxTypes":[]},"offset":0,"orderBy":11,"top":15}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:32:54 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 38<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: a0bd45d6-50cc-4d75-86af-09bd02411b24<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">gym2ctn91h</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123254Z-178dcbf9dbdzbqcdhC1BOMva2400000004f0000000009w51<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"items":null,"facets":null}</span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.4">3.4.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.3">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.5">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches/facets</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">pvmpnaaykn</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 154<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"make":["test"],"model":[],"price":{"min":null,"max":null},"bodyTypes":[],"fuelTypes":[],"co2":{"min":null,"max":null},"gearboxTypes":[],"categories":[]}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:36:25 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 337<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: c8f38b53-dd31-4338-9a27-2c9d78e27dd5<br>X-Country: dk<span class="HIGHLIGHT">pvmpnaaykn</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123625Z-178dcbf9dbdhbd4fhC1BOMaz6400000004fg000000007qp5<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"makeAndModel":{},"price":{"min":null,"max":null},"mileage":{"min":null,"max":null},"term":{"min":null,"max":null},"co2":{"min":null,"max":null},"modelYear":[],"fuelTypes":[],"gearboxTypes":[],"bodyTypes":[],"locations":[],"colors":[],"categories":[],"energyClass":[],"customRanges":{},"secondaryFuelTypes":[],"powerTrain":[]}</span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.5">3.5.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.4">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.6">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches/facets</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">dydyxnv9i6</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 154<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"make":["test"],"model":[],"price":{"min":null,"max":null},"bodyTypes":[],"fuelTypes":[],"co2":{"min":null,"max":null},"gearboxTypes":[],"categories":[]}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:37:07 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 337<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 1e94253c-3125-4108-b23b-91bc25ce8747<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">dydyxnv9i6</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123707Z-178dcbf9dbd4gllnhC1BOMfmcw00000004a000000000b1m7<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"makeAndModel":{},"price":{"min":null,"max":null},"mileage":{"min":null,"max":null},"term":{"min":null,"max":null},"co2":{"min":null,"max":null},"modelYear":[],"fuelTypes":[],"gearboxTypes":[],"bodyTypes":[],"locations":[],"colors":[],"categories":[],"energyClass":[],"customRanges":{},"secondaryFuelTypes":[],"powerTrain":[]}</span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.6">3.6.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/searches/facets [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.5">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.7">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches/facets</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">94hf4mcawg</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 154<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"make":["test"],"model":[],"price":{"min":null,"max":null},"bodyTypes":[],"fuelTypes":[],"co2":{"min":null,"max":null},"gearboxTypes":[],"categories":[]}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Wed, 27 Nov 2024 12:36:45 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 337<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: ffcc49af-edad-4cd4-b73f-458da0c106fd<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">94hf4mcawg</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241127T123645Z-178dcbf9dbd4ml8xhC1BOMf9dn00000004qg00000000gxm5<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"makeAndModel":{},"price":{"min":null,"max":null},"mileage":{"min":null,"max":null},"term":{"min":null,"max":null},"co2":{"min":null,"max":null},"modelYear":[],"fuelTypes":[],"gearboxTypes":[],"bodyTypes":[],"locations":[],"colors":[],"categories":[],"energyClass":[],"customRanges":{},"secondaryFuelTypes":[],"powerTrain":[]}</span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.7">3.7.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.6">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.8">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147377</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147377 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">mthzagqakb</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:45 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: ef89708e-3997-4482-9e26-78603324dcb2<br>X-Country: dk<span class="HIGHLIGHT">mthzagqakb</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122245Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000evuv<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.8">3.8.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.7">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.9">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147377</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147377 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">ewg75evlxj</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:25 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 4dd3aa4d-188c-443d-915b-82ddd334a5fb<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">ewg75evlxj</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122325Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f124<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.9">3.9.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147377 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.8">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.10">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147377</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147377 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">k0dc8e9ltu</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:04 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: af1b5362-ceee-4ad5-ace1-0c9cfb0981ea<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">k0dc8e9ltu</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122304Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000ey9k<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.10">3.10.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.9">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.11">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147383</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147383 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">j7x5h47s37</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:24:45 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 13e33240-c413-4412-8f6c-9664fb715f94<br>X-Country: dk<span class="HIGHLIGHT">j7x5h47s37</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122445Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000fcg6<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.11">3.11.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.10">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.12">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147383</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147383 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">vgdtpcuplf</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:25:27 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: e333696f-c43c-4da6-bff0-c74f6df8c745<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">vgdtpcuplf</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122527Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000fh4s<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.12">3.12.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147383 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.11">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.13">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147383</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147383 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">4b4qcpj6qe</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:25:05 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: bbce434a-c9bc-4ed4-ba13-bd50458a3882<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">4b4qcpj6qe</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122505Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000feww<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.13">3.13.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.12">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.14">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147384</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147384 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">i8rtavcutb</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: fb82a11c-53ea-4b3c-869d-ab97818d1f03<br>X-Country: dk<span class="HIGHLIGHT">i8rtavcutb</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eur3<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.14">3.14.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.13">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.15">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147384</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147384 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">wrasipq6y1</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:18 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 1654becc-ef75-48e4-b197-4da0be47323d<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">wrasipq6y1</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122318Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f03q<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.15">3.15.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147384 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.14">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.16">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147384</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147384 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">uuofz7fnwu</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:59 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 09ac470e-08a6-4428-b3e6-f6b61c7af981<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">uuofz7fnwu</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122259Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exkd<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.16">3.16.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.15">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.17">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147389</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147389 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">xjzd3q2pab</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 1fd69529-06cb-4fee-903d-df316cab07b5<br>X-Country: dk<span class="HIGHLIGHT">xjzd3q2pab</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eus7<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.17">3.17.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.16">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.18">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147389</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147389 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">e14hlet0e7</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:19 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: c9ef6ff7-49c5-4cc3-8f53-0906fc4217ce<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">e14hlet0e7</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122319Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f08d<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.18">3.18.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147389 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.17">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.19">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147389</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147389 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">5zu86kwdv6</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:59 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: e0142ab4-8278-4f9b-bbbf-5d42dc049d25<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">5zu86kwdv6</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122259Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exn2<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.19">3.19.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.18">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.20">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147391</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147391 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">jnkh2ho92z</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 23e53874-7c05-49f7-bcd2-527e61a34afa<br>X-Country: dk<span class="HIGHLIGHT">jnkh2ho92z</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eurp<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.20">3.20.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.19">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.21">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147391</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147391 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">vsbe6pb0zq</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:19 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: b2001b13-4f01-43b3-95c9-01ec603376e2<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">vsbe6pb0zq</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122319Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f07e<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.21">3.21.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147391 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.20">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.22">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147391</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147391 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">ymp5615yp0</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:59 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 4157e034-1a70-4846-812d-be7a5b7c5a31<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">ymp5615yp0</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122258Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exhv<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.22">3.22.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.21">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.23">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147392</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147392 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">ml8ep8tvik</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 43fb0b45-c6f0-4ae6-a54b-cc85a674661c<br>X-Country: dk<span class="HIGHLIGHT">ml8ep8tvik</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eurv<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.23">3.23.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.22">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.24">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147392</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147392 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">p3bp8xzc1b</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:20 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 107e85b8-0042-46ab-8d0b-b0c064a46de9<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">p3bp8xzc1b</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122320Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f0cd<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.24">3.24.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147392 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.23">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.25">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147392</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147392 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">jzp6fimn0k</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:59 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 5325aa01-152c-4f4c-92c7-191702084cf6<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">jzp6fimn0k</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122259Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exph<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.25">3.25.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.24">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.26">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147397</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147397 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">jnfe5d2z44</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: e81d3faf-6571-4418-a257-e3c7c819bfc9<br>X-Country: dk<span class="HIGHLIGHT">jnfe5d2z44</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eurh<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.26">3.26.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.25">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.27">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147397</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147397 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">vpm0y6c70h</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:19 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 72600c84-f0f3-41a8-85eb-b6874fb6e5f8<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">vpm0y6c70h</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122318Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f060<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.27">3.27.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147397 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.26">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.28">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147397</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147397 HTTP/1.1<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">t4ct7nsm9h</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br>Connection: keep-alive<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:58 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 354b20be-031d-4c8e-9082-c400585a5ea5<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">t4ct7nsm9h</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122258Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exhe<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.28">3.28.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.27">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.29">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147398</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147398 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">xkea9nm74p</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: c7b116ab-b5d9-4b1f-b5e3-59976f46c773<br>X-Country: dk<span class="HIGHLIGHT">xkea9nm74p</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eur8<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.29">3.29.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.28">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.30">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147398</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147398 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">ywbley6vn7</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:20 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 125e609f-a1e0-4f5e-8d9f-0d3ae4ab4573<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">ywbley6vn7</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122320Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f0dy<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.30">3.30.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147398 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.29">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.31">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147398</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147398 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">5xx7uln6y7</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:59 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 77fc5460-9416-4201-bf49-25d5e8c35e55<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">5xx7uln6y7</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122259Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exn0<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.31">3.31.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550 [X-Country HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.30">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.32">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147550</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Country</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147550 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<span class="HIGHLIGHT">73ldszyzdo</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:37 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: b978b93c-b0d3-4032-b77b-dc4b2b4a1fe2<br>X-Country: dk<span class="HIGHLIGHT">73ldszyzdo</span><br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122237Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000eur4<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.32">3.32.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550 [X-Partner HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.31">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#3.33">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147550</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Partner</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147550 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">t4b4h4ip1a</span><br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:23:20 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 072c7b29-22e7-496d-a0cf-5f25d3e140b2<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<span class="HIGHLIGHT">t4b4h4ip1a</span><br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122320Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000f0cz<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH1" id="3.33">3.33.&nbsp;https://api.staging.aldautomotive.com/uat/aldi-df/vehicles/vehicle/17147550 [X-Sales-Channel HTTP header]</span>
+<br><a class="PREVNEXT" href="#3.32">Previous</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/vehicle/17147550</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The value of the <b>X-Sales-Channel</b> HTTP header is copied into the application's response.</span>
+<h2>Request</h2>
+<div class="rr_div"><span>GET /uat/aldi-df/vehicles/vehicle/17147550 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">ieagwu91at</span><br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br></span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 204 No Content<br>Date: Mon, 02 Dec 2024 12:22:59 GMT<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: ea95a92a-0fb5-4bb5-a8ad-010e79eedf74<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<span class="HIGHLIGHT">ieagwu91at</span><br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241202T122259Z-178dcbf9dbd7fz7rhC1BOMazbn0000000mz000000000exmf<br>X-Cache: CONFIG_NOCACHE<br><br></span></div>
+<div class="rule"></div>
+<span class="BODH0" id="4">4.&nbsp;<a href="https://portswigger.net/knowledgebase/issues/details/01000100_tlscertificate">TLS certificate</a></span>
+<br><a class="PREVNEXT" href="#3">Previous</a>
+&nbsp;<a class="PREVNEXT" href="#5">Next</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The server presented a valid, trusted TLS certificate. This issue is purely informational.<br><br>The server presented the following certificates:<br><br><h4>Server certificate</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>api.staging.aldautomotive.com</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>DigiCert Global G2 TLS RSA SHA256 2020 CA1</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Tue Nov 19 00:00:00 UTC 2024</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Tue Nov 18 23:59:59 UTC 2025</td></tr></table><h4>Certificate chain #1</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>DigiCert Global G2 TLS RSA SHA256 2020 CA1</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>DigiCert Global Root G2</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Tue Mar 30 00:00:00 UTC 2021</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Sat Mar 29 23:59:59 UTC 2031</td></tr></table><h4>Certificate chain #2</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>DigiCert Global Root G2</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>DigiCert Global Root G2</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Thu Aug 01 12:00:00 UTC 2013</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Fri Jan 15 12:00:00 UTC 2038</td></tr></table><h4>Certificate chain #3</h4><table><tr><td><b>Issued to:</b>&nbsp;&nbsp;</td><td>DigiCert Global Root G2</td></tr><tr><td><b>Issued by:</b>&nbsp;&nbsp;</td><td>DigiCert Global Root G2</td></tr><tr><td><b>Valid from:</b>&nbsp;&nbsp;</td><td>Thu Aug 01 12:00:00 UTC 2013</td></tr><tr><td><b>Valid to:</b>&nbsp;&nbsp;</td><td>Fri Jan 15 12:00:00 UTC 2038</td></tr></table></span>
+<h2>Issue background</h2>
+<span class="TEXT"><p>TLS (or SSL) helps to protect the confidentiality and integrity of information in transit between the browser and server, and to provide authentication of the server's identity. To serve this purpose, the server must present an TLS certificate that is valid for the server's hostname, is issued by a trusted authority and is valid for the current date. If any one of these requirements is not met, TLS connections to the server will not provide the full protection for which TLS is designed.</p>
+<p>It should be noted that various attacks exist against TLS in general, and in the context of HTTPS web connections in particular. It may be possible for a determined and suitably-positioned attacker to compromise TLS connections without user detection even when a valid TLS certificate is used. </p></span>
+<h2>References</h2>
+<span class="TEXT"><ul><li><a href="https://wiki.mozilla.org/Security/Server_Side_TLS">SSL/TLS Configuration Guide</a></li></ul></span>
+<h2>Vulnerability classifications</h2><span class="TEXT"><ul>
+<li><a href="https://cwe.mitre.org/data/definitions/295.html">CWE-295: Improper Certificate Validation</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326: Inadequate Encryption Strength</a></li>
+<li><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327: Use of a Broken or Risky Cryptographic Algorithm</a></li>
+</ul></span>
+<div class="rule"></div>
+<span class="BODH0" id="5">5.&nbsp;<a href="https://portswigger.net/knowledgebase/issues/details/01000500_hiddenhttp2">Hidden HTTP 2</a></span>
+<br><a class="PREVNEXT" href="#4">Previous</a>
+<br>
+<h2>Summary</h2>
+<table cellpadding="0" cellspacing="0" class="summary_table">
+<tr>
+<td rowspan="4" class="icon" valign="top" align="center"><img width='32' height='32' src='images/scan_issue_info_certain_rpt.png'></td>
+<td>Severity:&nbsp;&nbsp;</td>
+<td><b>Information</b></td>
+</tr>
+<tr>
+<td>Confidence:&nbsp;&nbsp;</td>
+<td><b>Certain</b></td>
+</tr>
+<tr>
+<td>Host:&nbsp;&nbsp;</td>
+<td><b>https://api.staging.aldautomotive.com</b></td>
+</tr>
+<tr>
+<td>Path:&nbsp;&nbsp;</td>
+<td><b>/uat/aldi-df/vehicles/searches/facets</b></td>
+</tr>
+</table>
+<h2>Issue detail</h2>
+<span class="TEXT">The server did not list <b>h2</b> in the ALPN field during the TLS handshake. However, when a HTTP/2 request was sent over the TLS connection, a HTTP/2 response was received. This indicates that the server does support HTTP/2, despite not advertising it.</span>
+<h2>Issue background</h2>
+<span class="TEXT"><p>
+    Clients that support HTTP/2 typically default to HTTP/1.1, and only use HTTP/2 if the server advertises support for it via the ALPN field during the TLS handshake.
+</p>
+<p>
+    Some misconfigured servers that do support HTTP/2 fail to advertise this, making it appear as though they only support HTTP/1.1. This can lead to people overlooking viable HTTP/2 attack surface and missing associated vulnerabilities, such as HTTP/2 downgrade-based request smuggling.
+</p></span>
+<h2>Issue remediation</h2>
+<span class="TEXT"><p>
+    If you want to use HTTP/2, make sure the server is configured to advertise it correctly. Otherwise, consider fully disabling it server-side to reduce unnecessary attack surface.
+</p></span>
+<h2>References</h2>
+<span class="TEXT"><ul>
+    <li><a href="https://portswigger.net/research/http2">HTTP/2: The Sequel is Always Worse</a></li>
+</ul></span>
+<h2>Vulnerability classifications</h2><span class="TEXT"><ul>
+    <li><a href="https://cwe.mitre.org/data/definitions/912.html">CWE-912: Hidden Functionality</a></li>
+</ul></span>
+<h2>Request</h2>
+<div class="rr_div"><span>POST /uat/aldi-df/vehicles/searches/facets?fields=0&amp;fields=1&amp;fields=2&amp;fields=3&amp;fields=4&amp;fields=5&amp;fields=6&amp;fields=7&amp;fields=8&amp;fields=9&amp;fields=10&amp;fields=11&amp;fields=12&amp;fields=13&amp;fields=14&amp;fields=15&amp;fields=16 HTTP/2<br>Host: api.staging.aldautomotive.com<br>User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0<br>Accept: */*<br>Accept-Language: da-DK<br>Accept-Encoding: gzip, deflate, br<br>Referer: https://uat-mymobility.azurewebsites.net/<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>X-Ald-Subscription-Key: e22206ba38064641a910c6fb6505c32b<br>Content-Type: application/json<br>Content-Length: 189<br>Origin: https://uat-mymobility.azurewebsites.net<br>Sec-Fetch-Dest: empty<br>Sec-Fetch-Mode: cors<br>Sec-Fetch-Site: cross-site<br>Priority: u=4<br>Te: trailers<br><br>{"make":["onerror=eval;throw'=alert\\x2823\\x29';"],"model":[],"price":{"min":null,"max":null},"bodyTypes":[],"fuelTypes":[],"co2":{"min":null,"max":null},"gearboxTypes":[],"categories":[]}</span></div>
+<h2>Response</h2>
+<div class="rr_div"><span>HTTP/2 200 OK<br>Date: Thu, 28 Nov 2024 04:19:39 GMT<br>Content-Type: application/json; charset=utf-8<br>Content-Length: 337<br>Cache-Control: no-cache<br>Pragma: no-cache<br>Vary: Origin<br>Ald-Corid: 40533d95-abcb-48bf-9a02-4a636e4e40df<br>X-Country: dk<br>X-Sales-Channel: l2ofsl<br>X-Partner: ald<br>Accept-Language: da-DK<br>Strict-Transport-Security: max-age=63072000; includeSubDomains<br>X-Frame-Options: SAMEORIGIN<br>X-Xss-Protection: 1; mode=block<br>X-Content-Type-Options: nosniff<br>Content-Security-Policy: default-src 'self'<br>Access-Control-Allow-Origin: https://uat-mymobility.azurewebsites.net<br>Access-Control-Allow-Credentials: true<br>Access-Control-Expose-Headers: Access-Control-Allow-Origin<br>Request-Context: appId=cid-v1:eda5955c-a9bb-4891-a5bd-812d91cd7e5c<br>X-Azure-Ref: 20241128T041939Z-178dcbf9dbd4gllnhC1BOMfmcw000000068g00000000a678<br>X-Cache: CONFIG_NOCACHE<br>Accept-Ranges: bytes<br><br>{"count":0,"makeAndModel":{},"price":{"min":null,"max":null},"mileage":{"min":null,"max":null},"term":{"min":null,"max":null},"co2":{"min":null,"max":null},"modelYear":[],"fuelTypes":[],"gearboxTypes":[],"bodyTypes":[],"locations":[],"colors":[],"categories":[],"energyClass":[],"customRanges":{},"secondaryFuelTypes":[],"powerTrain":[]}</span></div>
+<div class="rule"></div>
+<span class="TEXT"><br>Report generated by Burp Suite <a href="https://portswigger.net/vulnerability-scanner/">web vulnerability scanner</a> v2024.6.3, at Thu Dec 05 11:16:13 UTC 2024.<br><br></span>
+</div>
+</body>
+</html>
